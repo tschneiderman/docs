@@ -1,0 +1,45 @@
+---
+title: "Affinity"
+description: "Connect your Affinity relationship intelligence CRM to sync contacts, companies, and pipeline data."
+---
+
+[Affinity](https://www.affinity.co) is a relationship intelligence CRM built for dealmakers. It automatically captures relationship history from your team's emails and calendar and surfaces who knows who across your network.
+
+## What syncs
+
+When you connect Affinity, Breaknine imports:
+
+- **People** — contacts from your lists, including emails, titles, and companies
+- **Organizations** — company records with firmographic data
+- **List entries** — deal pipeline stages and field values
+- **Relationship history** — interaction signals captured by Affinity
+
+All synced records appear as prospects in Breaknine and are available for AI enrichment and outreach.
+
+## Connect Affinity
+
+<Steps>
+  <Step title="Get your API key">
+    In Affinity, go to **Settings → API** and generate a new API key. Copy it to your clipboard.
+  </Step>
+  <Step title="Connect in Breaknine">
+    Go to **Settings → Integrations** in Breaknine and click **Connect** next to Affinity. Paste your API key and click **Save**.
+
+    Alternatively, you can import contacts directly via a CSV export from Affinity — choose **Upload CSV** in the same dialog.
+  </Step>
+  <Step title="Configure your sync">
+    After connecting, select which Affinity lists to sync into Breaknine. You can map list fields to Breaknine prospect attributes.
+  </Step>
+</Steps>
+
+## Sync behavior
+
+| Type | Behavior |
+|---|---|
+| Initial sync | All records from selected lists are imported on first connection |
+| Incremental sync | New and updated records sync on a scheduled basis |
+| Credentials | API key, encrypted at rest |
+
+## Disconnect
+
+Go to **Settings → Integrations**, click the Affinity row, and select **Disconnect**. You can optionally delete all synced data from Breaknine at the same time.

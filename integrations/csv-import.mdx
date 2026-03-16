@@ -1,0 +1,58 @@
+---
+title: "CSV import"
+description: "Import contacts from any CRM or spreadsheet using a CSV file."
+---
+
+If your CRM isn't directly integrated with Breaknine yet, you can import contacts from any source using a CSV file. This works with any tool that can export to CSV — including Salesforce, HubSpot, LinkedIn Sales Navigator, and custom spreadsheets.
+
+## Supported file formats
+
+- `.csv` (comma-separated)
+- Standard Excel exports saved as CSV
+
+## What gets imported
+
+Each row in your CSV becomes a prospect in Breaknine. You can map any column to a Breaknine field during the import process:
+
+| Breaknine field | Example column names |
+|---|---|
+| Name | `Name`, `Full Name`, `Contact` |
+| Email | `Email`, `Email Address`, `Work Email` |
+| Company | `Company`, `Organization`, `Firm` |
+| Title | `Title`, `Job Title`, `Role` |
+| LinkedIn URL | `LinkedIn`, `Profile URL` |
+
+Fields that don't map to a Breaknine attribute are stored as custom metadata on the prospect record.
+
+## Import contacts
+
+<Steps>
+  <Step title="Export from your CRM">
+    Export your contacts as a CSV from your CRM or spreadsheet tool. Make sure to include at minimum a name and email column.
+  </Step>
+  <Step title="Upload the file">
+    Go to **Settings → Integrations** in Breaknine and scroll to the **CSV import** section. Click **Upload CSV** and select your file.
+  </Step>
+  <Step title="Map your columns">
+    Breaknine will preview the first few rows of your file. Map each column to the correct prospect field. Columns you don't need can be skipped.
+  </Step>
+  <Step title="Confirm import">
+    Review the total number of records to be imported and click **Import**. Breaknine will process your file and notify you when done.
+  </Step>
+</Steps>
+
+<Tip>
+  After importing, you can immediately run AI enrichment on your new prospects. Breaknine will research each contact and generate a summary, talking points, and a draft outreach message.
+</Tip>
+
+## Supported CRM exports
+
+CSV import works out of the box with exports from:
+
+- Salesforce
+- HubSpot
+- Affinity (as an alternative to the direct integration)
+- LinkedIn Sales Navigator
+- Apollo
+- Clay
+- Any spreadsheet tool (Excel, Google Sheets, Notion databases)

@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "venus",
+  "theme": "mint",
   "name": "Breaknine",
   "colors": {
     "primary": "#0b2b26",
@@ -27,6 +27,22 @@
       {
         "tab": "Changelog",
         "pages": ["changelog"]
+      },
+      {
+        "tab": "Integrations",
+        "pages": [
+          "integrations/introduction",
+          {
+            "group": "CRM integrations",
+            "pages": [
+              "integrations/affinity",
+              "integrations/attio",
+              "integrations/airtable",
+              "integrations/dealcloud",
+              "integrations/csv-import"
+            ]
+          }
+        ]
       }
     ]
   },

@@ -1,0 +1,35 @@
+---
+title: "Integrations"
+description: "Connect Breaknine to your CRM and data sources to enrich prospects and sync your pipeline."
+---
+
+Breaknine connects to the tools your team already uses. Once connected, your CRM data is automatically synced, prospects are enriched with AI-generated summaries, and outreach drafts are ready to send — all without manual data entry.
+
+## Supported integrations
+
+| Integration | Type | Auth |
+|---|---|---|
+| [Affinity](/integrations/affinity) | Relationship intelligence CRM | API key |
+| [Attio](/integrations/attio) | Modern CRM | API key |
+| [Airtable](/integrations/airtable) | Spreadsheet-database hybrid | OAuth |
+| [DealCloud](/integrations/dealcloud) | Deal and pipeline management | Client credentials |
+| [CSV import](/integrations/csv-import) | Any CRM export | File upload |
+
+## How sync works
+
+When you connect a CRM, Breaknine performs an **initial full sync** to pull in all your existing contacts and companies. After that, changes in your CRM are reflected in Breaknine automatically.
+
+- **Full sync** — imports all records on first connection
+- **Incremental sync** — picks up new and updated records on a schedule
+- **Webhook sync** — instant updates when supported by the provider
+
+All credentials are encrypted at rest. Breaknine never stores raw API keys.
+
+## Coming soon
+
+The following integrations are in development:
+
+- **Gmail** — email and communication intelligence
+- **Outlook** — email and calendar from Microsoft 365
+- **Google Calendar** — meeting and scheduling context
+- **Google Drive** — document context for RAG-powered enrichment

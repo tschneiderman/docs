@@ -1,0 +1,52 @@
+---
+title: "DealCloud"
+description: "Connect your DealCloud instance to sync deal pipeline and contact data into Breaknine."
+---
+
+[DealCloud](https://www.dealcloud.com) is a deal and relationship management platform built for investment banks, private equity firms, and capital markets teams. It centralizes pipeline tracking, contact management, and firm intelligence.
+
+## What syncs
+
+When you connect DealCloud, Breaknine imports:
+
+- **Contacts** — people records with name, email, title, and firm affiliation
+- **Companies** — organization records with deal pipeline context
+- **Deals** — pipeline entries including stage, status, and associated contacts
+
+All synced records appear as prospects in Breaknine and are available for AI enrichment and outreach.
+
+## Connect DealCloud
+
+DealCloud uses client credentials (OAuth 2.0 client credentials flow) rather than a simple API key. You'll need three values from your DealCloud admin.
+
+<Steps>
+  <Step title="Get your credentials from DealCloud">
+    Contact your DealCloud administrator or go to your DealCloud instance's API settings to obtain:
+
+    - **Site URL** — your DealCloud instance URL, e.g. `yourfirm.dealcloud.com`
+    - **Client ID** — the OAuth client ID for the API integration
+    - **Client Secret** — the corresponding secret
+  </Step>
+  <Step title="Connect in Breaknine">
+    Go to **Settings → Integrations** in Breaknine and click **Connect** next to DealCloud. Enter your site URL, client ID, and client secret, then click **Connect**.
+  </Step>
+  <Step title="Configure your sync">
+    After connecting, select which entry lists and contact types to sync into Breaknine.
+  </Step>
+</Steps>
+
+## Sync behavior
+
+| Type | Behavior |
+|---|---|
+| Initial sync | All contacts and companies are imported on first connection |
+| Incremental sync | New and updated records sync on a scheduled basis |
+| Credentials | Client ID + Client Secret, encrypted at rest |
+
+<Note>
+  DealCloud is typically used by financial services firms with enterprise-grade access controls. If you don't have API credentials, ask your DealCloud administrator to create an API user with read access.
+</Note>
+
+## Disconnect
+
+Go to **Settings → Integrations**, click the DealCloud row, and select **Disconnect**. You can optionally delete all synced data from Breaknine at the same time.

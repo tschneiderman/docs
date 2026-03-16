@@ -1,0 +1,42 @@
+---
+title: "Attio"
+description: "Connect your Attio CRM to sync people, companies, and deal data into Breaknine."
+---
+
+[Attio](https://attio.com) is a modern, flexible CRM built for relationship-driven teams. It lets you build custom objects, views, and workflows on top of your contact and company data.
+
+## What syncs
+
+When you connect Attio, Breaknine imports:
+
+- **People** — contact records with emails, job titles, and linked companies
+- **Companies** — organization records with attributes and relationship signals
+- **Custom attributes** — any custom fields you've defined in Attio are mapped to Breaknine prospect fields
+
+All synced records appear as prospects in Breaknine and are available for AI enrichment and outreach.
+
+## Connect Attio
+
+<Steps>
+  <Step title="Get your API key">
+    In Attio, go to **Settings → API keys** and create a new key with read access. Copy it to your clipboard.
+  </Step>
+  <Step title="Connect in Breaknine">
+    Go to **Settings → Integrations** in Breaknine and click **Connect** next to Attio. Enter your API key and click **Save**.
+  </Step>
+  <Step title="Configure your sync">
+    After connecting, choose which objects and lists to include in your sync. Map Attio attributes to Breaknine fields as needed.
+  </Step>
+</Steps>
+
+## Sync behavior
+
+| Type | Behavior |
+|---|---|
+| Initial sync | All people and companies are imported on first connection |
+| Incremental sync | New and updated records sync on a scheduled basis |
+| Credentials | API key, encrypted at rest |
+
+## Disconnect
+
+Go to **Settings → Integrations**, click the Attio row, and select **Disconnect**. You can optionally delete all synced data from Breaknine at the same time.

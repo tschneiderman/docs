@@ -1,0 +1,46 @@
+---
+title: "Airtable"
+description: "Connect your Airtable bases to sync contact and company data into Breaknine."
+---
+
+[Airtable](https://airtable.com) is a flexible spreadsheet-database hybrid used by many teams to track contacts, deals, and pipelines. Breaknine connects via OAuth so you don't need to manage API keys manually.
+
+## What syncs
+
+When you connect Airtable, Breaknine can import records from any base and table you select:
+
+- **Contact tables** — people records with name, email, title, and company fields
+- **Company tables** — organization records with firmographic fields
+- **Custom fields** — any field in your Airtable table can be mapped to a Breaknine prospect attribute
+
+All synced records appear as prospects in Breaknine and are available for AI enrichment and outreach.
+
+## Connect Airtable
+
+<Steps>
+  <Step title="Authorize via OAuth">
+    Go to **Settings → Integrations** in Breaknine and click **Connect** next to Airtable. You'll be redirected to Airtable to authorize access. Grant Breaknine permission to read your bases and click **Allow access**.
+  </Step>
+  <Step title="Select your bases and tables">
+    After authorizing, choose which Airtable base and table contains your contacts or companies.
+  </Step>
+  <Step title="Map your fields">
+    Map the columns in your Airtable table to Breaknine's prospect fields (name, email, company, title, etc.).
+  </Step>
+</Steps>
+
+## Sync behavior
+
+| Type | Behavior |
+|---|---|
+| Initial sync | All rows from selected tables are imported on first connection |
+| Incremental sync | New and updated rows sync on a scheduled basis |
+| Auth method | OAuth — no API key needed |
+
+<Note>
+  Airtable uses OAuth for authentication. Breaknine never stores your Airtable password. You can revoke access at any time from your Airtable account under **Account → Authorized apps**.
+</Note>
+
+## Disconnect
+
+Go to **Settings → Integrations**, click the Airtable row, and select **Disconnect**. You can optionally delete all synced data from Breaknine at the same time.
