@@ -4,20 +4,20 @@ description: "New updates and improvements to Breaknine."
 mode: "center"
 ---
 
-<Update label="Mar 11, 2026">
-  ### Interface polish
+<Update label="Mar 20, 2026" description="v0.2.0">
+  ### Daily digest redesign, home feed improvements, and competitor reliability
 
-  Refined UI details, motion, and visual spacing across the app for a more polished experience. Interactions feel tighter and transitions are smoother throughout.
+  **Daily digest now organized into sections**
 
-  ### Prospects label renamed to "Discovered"
+  Your daily update email has been restructured for clarity. Trigger updates are now grouped into dedicated sections — prospects, competitors, and portfolio — so you can scan what matters at a glance. A new **Next Actions** section surfaces tasks by urgency: past due, due today, and upcoming.
 
-  The **Review** label on prospect records has been renamed to **Discovered** to better reflect where contacts sit in your pipeline.
+  **Home feed tab reorder and empty states**
 
-  ### Improvements
+  The activity feed tabs are now ordered **All → Prospects → Competitors → Portfolio**, matching how most users scan their pipeline. Each tab also shows a contextual empty state message when there's nothing to display, instead of a blank screen.
 
-  - Improved cross-provider AI fallback handling so enrichment is more resilient when one model is unavailable
-  - Fixed a retry loop in candidate discovery that could cause repeated redundant requests
-  - Removed debug logging from semantic search for cleaner performance in production
+  **Competitor discovery reliability improvements**
+
+  Hardened the competitor workflow with better cross-provider fallback handling and fixed a retry loop bug in candidate discovery. Competitor results are more consistent and load faster.
 </Update>
 
 <Update label="Mar 5, 2026" description="v0.1.0" tags={["Launch"]}>
