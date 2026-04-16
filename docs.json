@@ -30,6 +30,10 @@
         "pages": ["changelog"]
       },
       {
+        "tab": "Blog",
+        "pages": ["blog"]
+      },
+      {
         "tab": "Integrations",
         "pages": [
           "integrations/introduction",
@@ -62,11 +66,6 @@
       "type": "button",
       "label": "Sign in",
       "href": "https://app.breaknine.com"
-    }
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/breaknine"
     }
   },
   "redirects": [
