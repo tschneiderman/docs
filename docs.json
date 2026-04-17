@@ -30,10 +30,6 @@
         "pages": ["changelog"]
       },
       {
-        "tab": "Blog",
-        "pages": ["blog"]
-      },
-      {
         "tab": "Integrations",
         "pages": [
           "integrations/introduction",
