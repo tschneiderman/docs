@@ -1,6 +1,6 @@
-# Linear context for changelog — Apr 16, 2026
+# Linear context for changelog — Apr 23, 2026
 
-_Generated 4/16/2026, 2:38:19 PM · 11 Done issue(s) from "What's New and Improved" view_
+_Generated 4/23/2026, 1:06:17 PM · 4 Done issue(s) from "What's New and Improved" view_
 
 ---
 
@@ -8,236 +8,133 @@ _Generated 4/16/2026, 2:38:19 PM · 11 Done issue(s) from "What's New and Improv
 
 ### MVP
 
-**BNE-838: Show source badge for updates**
+**BNE-865: Affinity web hook syncing**
+State: Done
+Labels: Bug
+Completed: Apr 21, 2026
+URL: https://linear.app/breaknine/issue/BNE-865/affinity-web-hook-syncing
+
+### Summary
+
+Affinity's configuration panel is missing the Next Actions selection
+
+## Expectation
+
+User's should be able to select their Next action tab
+
+### How to reproduce
+
+* Go to Integrations
+* Connect Affinity using valid API Key
+
+### Acceptance criteria
+
+* Notes/Next actions (Reminders) are synced within the platform
+
+### Notes
+
+N/A
+
+**BNE-859: Auto delete outreach emails**
 State: Done
 Labels: Changelog 📰
-Completed: Apr 14, 2026
-URL: https://linear.app/breaknine/issue/BNE-838/show-source-badge-for-updates
+Completed: Apr 22, 2026
+URL: https://linear.app/breaknine/issue/BNE-859/auto-delete-outreach-emails
 
-**Summary**
+### Summary
 
-Users viewing updates in the activity feed had no way to identify at a glance which platform an update was sourced from — they had to click through the link to find out. This adds a small inline source badge (e.g. "X", "Substack", "LinkedIn") to each update card so the origin platform is visible without any additional interaction.
+Right now there isn't any logic in place to delete previously generated outreach emails. We should determine what's a good duration before emails are auto deleted.
 
-![CleanShot 2026-04-15 at 17.10.46@2x.png](https://uploads.linear.app/ed20061f-25b3-4096-ba82-826efeb03a2c/713cc40f-9af7-4a28-aa5a-0ff38f8cb3ad/9780d0b6-5f86-43e2-8523-1033d49597f4)
+### Blockers
 
-**Blockers**
+* N/A
 
-N/A
+### Acceptance criteria
 
-**Acceptance criteria**
+* After X time has passed outreach emails should be automatically removed
+* In /settings we should have some visible (no editable) information showing how often emails are set to delete
 
-* Each update card in the activity feed displays a source badge matching its origin platform
-* Supported sources: X (Twitter), SubStack, LinkedIn, and web/news sources
-* Badge is visible without clicking or hovering on the upd…
+### Notes
 
-**BNE-828: Add founders to prospect overview page**
+For V1, we should automatically delete emails but this could be a value add for pricing to extend the duration if needed
+
+**BNE-855: Redesign Outreach**
 State: Done
 Labels: Changelog 📰
-Completed: Apr 9, 2026
-URL: https://linear.app/breaknine/issue/BNE-828/add-founders-to-prospect-overview-page
+Completed: Apr 22, 2026
+URL: https://linear.app/breaknine/issue/BNE-855/redesign-outreach
 
-## Summary
+## Main issues
 
-The prospect overview page previously showed only company-level information. This surfaces founder and key contact data directly on the overview tab so users get immediate visibility into who to reach out to without navigating elsewhere.
+* It's not intuitive to clear outreaches
+* The layout of outreach should be sectioned
+  * **Draft** (like linear with issues)
+    * Edited but not sent
+  * **Sent**
+    * Generated and used
+  * **Create** (not sure if this tab makes sense?)
+    * Builder for creating the email
+* The "**Recent updates**" dropdown should have a status per generated outreach
+  * Used (this was previously used for an email)
+  * New (this has been surfaced but not used)
+* The email UI should dynamically track email events using the outreach:
+  * Sent emails
+  * Replies
+  * Forwards?? (not sure if it's needed)
 
-![CleanShot 2026-04-15 at 17.11.41@2x.png](https://uploads.linear.app/ed20061f-25b3-4096-ba82-826efeb03a2c/0c591de5-878e-4baa-a403-ba06c9595879/1e2fcf05-a76d-4ee2-bacb-5a51c326fe7f)
+![image.png](https://uploads.linear.app/ed20061f-25b3-4096-ba82-826efeb03a2c/8ced70df-635c-49b1-bfa5-b0cb094cf0e0/703b5f10-b24a-4712-8daf-c9f2ee800174)
 
-## Blockers
-
-N/A
-
-## Acceptance criteria
-
-* Founders and primary contacts are displayed on the prospect overview page
-* Contact data is sourced from enrichment job
-* We have an empty state when no founders/primary contacts are found
-
-## Notes
-
-N/A
-
-**BNE-823: Figure out attio webhook issues**
+**BNE-851: Speed up vercel app builds**
 State: Done
 Labels: Bug
-Completed: Apr 14, 2026
-URL: https://linear.app/breaknine/issue/BNE-823/figure-out-attio-webhook-issues
+Completed: Apr 20, 2026
+URL: https://linear.app/breaknine/issue/BNE-851/speed-up-vercel-app-builds
 
-![](https://uploads.linear.app/ed20061f-25b3-4096-ba82-826efeb03a2c/eb0573fd-78b9-4869-bf1e-db3aafec6bfb/d9abe4c9-13b1-47b0-a389-2700971dc58f)
+### Summary
 
-For some reason we're still getting this error. I need to look at this sometime today
+App builds on Vercel builds are taking \~5mins to completed
 
-**BNE-648: ⌘ + K missing actions**
-State: Done
-Labels: Changelog 📰
-Completed: Apr 7, 2026
-URL: https://linear.app/breaknine/issue/BNE-648/k-missing-actions
+## Expectation
 
-## Summary
+Builds shouldn't take longer than 3mins
 
-The ⌘+K search was missing navigation locations and actionable commands that users expected to find there. This adds the missing entries so the search functions as a complete command hub across the app.
+### How to reproduce
 
-![CleanShot 2026-04-15 at 17.27.31@2x.png](https://uploads.linear.app/ed20061f-25b3-4096-ba82-826efeb03a2c/c3143299-ec62-4898-926e-3de8fb214405/8b18b338-5928-4859-a237-adb5690c97fa)
+* Push a commit and watch the Vercel build
 
-## Blockers
+### Acceptance criteria
 
-N/A
+* Build is less than 3mins
 
-## Acceptance criteria
-
-* All primary navigation destinations are reachable via ⌘+K
-* All major actions (create prospect, start outreach, etc.) are accessible via ⌘+K
-* No functional navigation items are omitted from the palette
-
-## Notes
+### Notes
 
 N/A
-
-**BNE-644: We need to separate ⌘ + K 'Actions' vs 'Navigation'**
-State: Done
-Labels: Changelog 📰
-Completed: Apr 7, 2026
-URL: https://linear.app/breaknine/issue/BNE-644/we-need-to-separate-k-actions-vs-navigation
-
-## Summary
-
-The ⌘+K search outgrew its functionality needs UI wise. This reorganizes the search into distinct "Navigation" and "Actions" sections with optional keyboard shortcuts shown inline, reducing cognitive load and improving discoverability.
-
-![CleanShot 2026-04-15 at 17.52.29@2x.png](https://uploads.linear.app/ed20061f-25b3-4096-ba82-826efeb03a2c/d5339dfe-c6ca-430b-8178-164f707cb77d/30f5cc65-bcd0-4e32-a4c8-689218a88c51)
-
-## Blockers
-
-N/A
-
-## Acceptance criteria
-
-* The command palette visually separates **Navigation** items from Action items
-* Navigation (go to page) and Actions (create, trigger, generate) are in distinct groups
-* Keyboard shortcuts are shown alongside relevant actions where available
-* All previously available commands remain accessible after the redesign
-
-## Notes
-…
-
-**BNE-639: Add outreach generation feature from prospect's page**
-State: Done
-Labels: Changelog 📰
-Completed: Apr 9, 2026
-URL: https://linear.app/breaknine/issue/BNE-639/add-outreach-generation-feature-from-prospects-page
-
-## Summary
-
-Users had to navigate away from a prospect's page to draft outreach messages. This adds an outreach generation tab directly on the prospect detail page so users can create outreach emails without losing context.
-
-![CleanShot 2026-04-15 at 17.13.16@2x.png](https://uploads.linear.app/ed20061f-25b3-4096-ba82-826efeb03a2c/cff561ec-aef4-406f-b104-d08c0e5dd5e5/d71ae6a8-6f55-4cd0-807f-77429dcc601f)
-
-## Blockers
-
-N/A
-
-## Acceptance criteria
-
-* An "Outreach" tab is available on each prospect's detail page
-* Users can generate an outreach messages from within the tab
-* Generated messages can be copied or sent directly via mail
-* Outreach generation uses the prospect's enriched data (company, contacts, recent news)
-
-## Notes
-
-N/A
-
-**BNE-502: Update Sentry configs to trigger alerts on final failures only**
-State: Done
-Labels: Bug
-Completed: Jan 26, 2026
-URL: https://linear.app/breaknine/issue/BNE-502/update-sentry-configs-to-trigger-alerts-on-final-failures-only
-
-@darryl said:
-
-> I need to update our sentry configs to only trigger alerts only on final failures and not just the 1st since retries are in place
-
-**BNE-266: Attio Webhooks**
-State: Done
-Labels: Bug
-Completed: Nov 25, 2025
-URL: https://linear.app/breaknine/issue/BNE-266/attio-webhooks
-
-Not working for Lauren when adding a new entry to "demo list"
-
-**BNE-261: Fix bug with Attio record sync via the onboarding flow**
-State: Done
-Labels: Bug
-Completed: Nov 19, 2025
-URL: https://linear.app/breaknine/issue/BNE-261/fix-bug-with-attio-record-sync-via-the-onboarding-flow
-
-### breaknine
-
-**BNE-257: Fix attio webhook**
-State: Done
-Labels: Bug
-Completed: Nov 18, 2025
-URL: https://linear.app/breaknine/issue/BNE-257/fix-attio-webhook
-
-**BNE-254: Fix attio webhooks**
-State: Done
-Labels: Bug
-Completed: Nov 17, 2025
-URL: https://linear.app/breaknine/issue/BNE-254/fix-attio-webhooks
 
 ---
 
 ## Draft `<Update>` block
 
 ```mdx
-<Update label="Apr 16, 2026" description="v0.5.0">
+<Update label="Apr 23, 2026" description="vX.X.X">
   {/* DRAFT — review and edit before publishing */}
 
   ### MVP
 
-  **Show source badge for updates**
+  **Affinity web hook syncing**
 
   Summary
 
-  **Add founders to prospect overview page**
+  **Auto delete outreach emails**
 
   Summary
 
-  **Figure out attio webhook issues**
+  **Redesign Outreach**
 
-  ![](https://uploads.linear.app/ed20061f-25b3-4096-ba82-826efeb03a2c/eb0573fd-78b9-4869-bf1e-db3aafec6bfb/d9abe4c9-13b1-47b0-a389-2700971dc58f)
+  Main issues
 
-  **⌘ + K missing actions**
-
-  Summary
-
-  **We need to separate ⌘ + K 'Actions' vs 'Navigation'**
+  **Speed up vercel app builds**
 
   Summary
-
-  **Add outreach generation feature from prospect's page**
-
-  Summary
-
-  **Update Sentry configs to trigger alerts on final failures only**
-
-  @darryl said:
-
-  **Attio Webhooks**
-
-  Not working for Lauren when adding a new entry to "demo list"
-
-  **Fix bug with Attio record sync via the onboarding flow**
-
-  {/* TODO: add description for BNE-261 */}
-
-  ### breaknine
-
-  **Fix attio webhook**
-
-  {/* TODO: add description for BNE-257 */}
-
-  **Fix attio webhooks**
-
-  {/* TODO: add description for BNE-254 */}
 
 </Update>
 ```
