@@ -2,19 +2,23 @@
 /**
  * generate-changelog.js
  *
- * Pulls all "Done" issues from a Linear custom view and writes context to LINEAR.mdx.
+ * Pulls all "Done" issues from a Linear custom view and recent merged PRs from
+ * GitHub, then writes combined context to LINEAR.mdx.
  *
  * Usage, run in terminal:
  *   node scripts/generate-changelog.js
  *   node scripts/generate-changelog.js --version v0.5.0
  *   node scripts/generate-changelog.js --version v0.5.0 --label "Apr 14, 2026"
  *   node scripts/generate-changelog.js --issues BRK-123,BRK-456 --version v0.5.0
+ *   node scripts/generate-changelog.js --since "2026-04-20"
  *
  * Options:
  *   --version   Version label for the draft <Update> block (e.g. v0.5.0). Optional.
  *   --label     Date label for the draft <Update> block (e.g. "Apr 14, 2026"). Defaults to today.
  *   --issues    Comma-separated Linear identifiers (e.g. BRK-123,BRK-124) to pull specific
  *               issues instead of the configured view.
+ *   --since     Only include GitHub PRs merged after this date (e.g. "2026-04-20"). Defaults to 14 days ago.
+ *   --pr-limit  Max number of GitHub PRs to fetch (default: 30).
  */
 
 import { readFileSync, writeFileSync } from "fs";
@@ -52,6 +56,8 @@ const get = (flag) => {
 const issueArg = get("--issues");
 const version = get("--version");
 const labelArg = get("--label");
+const sinceArg = get("--since");
+const prLimitArg = get("--pr-limit");
 
 // Linear GraphQL helpers
 async function linearQuery(query, variables = {}) {
@@ -97,7 +103,6 @@ async function fetchFromView() {
 
   console.log(`Fetching issues from view: ${viewId}...`);
 
-  // Paginate through all issues in the view
   let allIssues = [];
   let cursor = null;
   let page = 0;
@@ -124,7 +129,6 @@ async function fetchFromView() {
     page++;
   } while (cursor);
 
-  // Filter client-side for "Done" state (type "completed" or name "Done")
   const done = allIssues.filter(
     (i) =>
       i.state?.type === "completed" ||
@@ -158,6 +162,48 @@ async function fetchByIdentifiers(identifiers) {
     }
   }
   return issues;
+}
+
+// GitHub PR fetching
+async function fetchMergedPRs() {
+  const token = process.env.GITHUB_TOKEN;
+  const repo = process.env.GITHUB_REPO;
+
+  if (!token || !repo) {
+    console.log("Skipping GitHub PRs (GITHUB_TOKEN or GITHUB_REPO not set).");
+    return [];
+  }
+
+  const sinceDate = sinceArg
+    ? new Date(sinceArg)
+    : new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
+  const limit = parseInt(prLimitArg ?? "30", 10);
+
+  console.log(`\nFetching merged PRs from ${repo} since ${sinceDate.toDateString()}...`);
+
+  const [owner, repoName] = repo.split("/");
+  const url = `https://api.github.com/repos/${owner}/${repoName}/pulls?state=closed&sort=updated&direction=desc&per_page=${limit}`;
+
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+    },
+  });
+
+  if (!res.ok) {
+    console.warn(`  GitHub API error: ${res.status} ${res.statusText}`);
+    return [];
+  }
+
+  const prs = await res.json();
+  const merged = prs.filter(
+    (pr) => pr.merged_at && new Date(pr.merged_at) >= sinceDate
+  );
+
+  console.log(`${prs.length} closed PRs fetched → ${merged.length} merged since cutoff.`);
+  return merged;
 }
 
 // Format helpers
@@ -221,18 +267,18 @@ function buildDraftUpdate(issues, dateLabel, versionLabel) {
   return lines.join("\n");
 }
 
-function writeLinearMdx(issues, draft, dateLabel) {
+function writeLinearMdx(issues, prs, draft, dateLabel) {
   const linearPath = resolve(__dirname, "../LINEAR.mdx");
   const groups = groupIssues(issues);
 
   const lines = [
-    `# Linear context for changelog — ${dateLabel}`,
+    `# Linear + GitHub context for changelog — ${dateLabel}`,
     "",
-    `_Generated ${new Date().toLocaleString()} · ${issues.length} Done issue(s) from "What's New and Improved" view_`,
+    `_Generated ${new Date().toLocaleString()} · ${issues.length} Done issue(s) from Linear · ${prs.length} merged PR(s) from GitHub_`,
     "",
     "---",
     "",
-    "## Issues",
+    "## Linear Issues",
     "",
   ];
 
@@ -258,6 +304,23 @@ function writeLinearMdx(issues, draft, dateLabel) {
     }
   }
 
+  if (prs.length) {
+    lines.push("---", "", "## GitHub PRs (merged)", "");
+    for (const pr of prs) {
+      lines.push(`**#${pr.number}: ${pr.title}**`);
+      lines.push(`Branch: ${pr.head?.ref ?? "unknown"}`);
+      lines.push(`Merged: ${formatDate(pr.merged_at)}`);
+      lines.push(`Author: ${pr.user?.login ?? "unknown"}`);
+      lines.push(`URL: ${pr.html_url}`);
+      if (pr.body && pr.body.trim()) {
+        lines.push("");
+        const body = pr.body.trim();
+        lines.push(body.length > 1000 ? body.slice(0, 1000) + "…" : body);
+      }
+      lines.push("");
+    }
+  }
+
   lines.push("---", "", "## Draft `<Update>` block", "", "```mdx", draft, "```", "");
 
   writeFileSync(linearPath, lines.join("\n"), "utf8");
@@ -276,16 +339,18 @@ async function main() {
     issues = await fetchFromView();
   }
 
-  if (!issues.length) {
-    console.log('No "Done" issues found in the view.');
+  const prs = await fetchMergedPRs();
+
+  if (!issues.length && !prs.length) {
+    console.log('No "Done" issues or merged PRs found.');
     process.exit(0);
   }
 
   const dateLabel = labelArg ?? todayLabel();
   const draft = buildDraftUpdate(issues, dateLabel, version);
-  writeLinearMdx(issues, draft, dateLabel);
+  writeLinearMdx(issues, prs, draft, dateLabel);
 
-  console.log(`\nLINEAR.mdx updated with ${issues.length} issue(s).`);
+  console.log(`\nLINEAR.mdx updated with ${issues.length} Linear issue(s) and ${prs.length} GitHub PR(s).`);
   console.log(`Next step: ask the agent to "look at LINEAR.mdx and apply any context to changelog.mdx"`);
 }
 

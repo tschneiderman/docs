@@ -1,83 +1,22 @@
-# Linear context for changelog — Apr 24, 2026
+# Linear + GitHub context for changelog — May 1, 2026
 
-_Generated 4/24/2026, 9:35:01 AM · 6 Done issue(s) from "What's New and Improved" view_
+_Generated 5/1/2026, 11:31:54 AM · 3 Done issue(s) from Linear · 18 merged PR(s) from GitHub_
 
 ---
 
-## Issues
+## Linear Issues
 
 ### MVP
 
-**BNE-897: Change “Clear all” copy to “Deselect all”**
-State: Done
-Labels: Bug
-Completed: Apr 22, 2026
-URL: https://linear.app/breaknine/issue/BNE-897/change-clear-all-copy-to-deselect-all
-
-The current “Clear all” label may imply removing updates. It should say “Deselect all” instead.
-
-**BNE-871: Implement dismiss button on tasks page**
-State: Done
-Labels: Changelog 📰, Improvement
-Completed: Apr 23, 2026
-URL: https://linear.app/breaknine/issue/BNE-871/implement-dismiss-button-on-tasks-page
-
-### Summary
-
-*A detailed summary of the feature*
-
-### Blockers
-
-*A list of blocking issues - tag other issues here*
-
-* 
-
-### Acceptance criteria
-
-*A list of items that should be functional - tag other issues here if relevant*
-
-* 
-
-### Notes
-
-* you should be able to just dismiss the notifications from the main page of the tasks - don't need to click into them
-
-**BNE-865: Affinity web hook syncing**
-State: Done
-Labels: Bug
-Completed: Apr 21, 2026
-URL: https://linear.app/breaknine/issue/BNE-865/affinity-web-hook-syncing
-
-### Summary
-
-Affinity's configuration panel is missing the Next Actions selection
-
-## Expectation
-
-User's should be able to select their Next action tab
-
-### How to reproduce
-
-* Go to Integrations
-* Connect Affinity using valid API Key
-
-### Acceptance criteria
-
-* Notes/Next actions (Reminders) are synced within the platform
-
-### Notes
-
-N/A
-
-**BNE-859: Auto delete outreach emails**
+**BNE-900: When outreaches are generated show completion toast**
 State: Done
 Labels: Changelog 📰
-Completed: Apr 22, 2026
-URL: https://linear.app/breaknine/issue/BNE-859/auto-delete-outreach-emails
+Completed: Apr 23, 2026
+URL: https://linear.app/breaknine/issue/BNE-900/when-outreaches-are-generated-show-completion-toast
 
 ### Summary
 
-Right now there isn't any logic in place to delete previously generated outreach emails. We should determine what's a good duration before emails are auto deleted.
+After an outreach is generated we should show a toast with optional buttons 
 
 ### Blockers
 
@@ -85,98 +24,286 @@ Right now there isn't any logic in place to delete previously generated outreach
 
 ### Acceptance criteria
 
-* After X time has passed outreach emails should be automatically removed
-* In /settings we should have some visible (no editable) information showing how often emails are set to delete
+* After an outreach is generated a toast should pop up on the lower right hand corner
+  * Mark completed? Yes/No
+    * Yes
+      * Mark used updates as used
+      * Update the list position of the company in the left hand panel (this should work for each tab)
+    * No
+      * No action is needed
+    * Ignored?
+      * No action is needed
 
 ### Notes
 
-For V1, we should automatically delete emails but this could be a value add for pricing to extend the duration if needed
+* This functionality will only live in the [/app/outreach](<http://localhost:3000/app/outreach>) page
 
-**BNE-855: Redesign Outreach**
+**BNE-863: Add custom email snippets**
 State: Done
 Labels: Changelog 📰
-Completed: Apr 22, 2026
-URL: https://linear.app/breaknine/issue/BNE-855/redesign-outreach
-
-## Main issues
-
-* It's not intuitive to clear outreaches
-* The layout of outreach should be sectioned
-  * **Draft** (like linear with issues)
-    * Edited but not sent
-  * **Sent**
-    * Generated and used
-  * **Create** (not sure if this tab makes sense?)
-    * Builder for creating the email
-* The "**Recent updates**" dropdown should have a status per generated outreach
-  * Used (this was previously used for an email)
-  * New (this has been surfaced but not used)
-* The email UI should dynamically track email events using the outreach:
-  * Sent emails
-  * Replies
-  * Forwards?? (not sure if it's needed)
-
-![image.png](https://uploads.linear.app/ed20061f-25b3-4096-ba82-826efeb03a2c/8ced70df-635c-49b1-bfa5-b0cb094cf0e0/703b5f10-b24a-4712-8daf-c9f2ee800174)
-
-**BNE-851: Speed up vercel app builds**
-State: Done
-Labels: Bug
-Completed: Apr 20, 2026
-URL: https://linear.app/breaknine/issue/BNE-851/speed-up-vercel-app-builds
+Completed: Apr 23, 2026
+URL: https://linear.app/breaknine/issue/BNE-863/add-custom-email-snippets
 
 ### Summary
 
-App builds on Vercel builds are taking \~5mins to completed
+Like SuperHuman, when drafting outreach emails we need custom snippets for users to utilize. Users can create/save snippets within their settings
 
-## Expectation
+### Blockers
 
-Builds shouldn't take longer than 3mins
-
-### How to reproduce
-
-* Push a commit and watch the Vercel build
+* N/A
 
 ### Acceptance criteria
 
-* Build is less than 3mins
+* Setting up custom snippets should live in the /settings page
+* When inside emails there should be a hot key to add them
+  * I believe it's `⌘ + ;` in SuperHuman but we can change to whatever
 
 ### Notes
 
 N/A
+
+**BNE-718: Competitor fixes**
+State: Done
+Labels: Changelog 📰, Improvement, Investor Newsletter
+Completed: Apr 29, 2026
+URL: https://linear.app/breaknine/issue/BNE-718/competitor-fixes
+
+The parent issue of the list of tasks that needs to be done
+
+---
+
+## GitHub PRs (merged)
+
+**#326: Add Microsoft identity association file for landing site**
+Branch: t3code/microsoft-identity-association
+Merged: Apr 30, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/326
+
+## Summary
+- Added the Microsoft identity association file under `apps/landing/static/.well-known/`.
+- Registers the landing app with Microsoft using application ID `837905ad-0ec2-4d07-a545-f2953de21377`.
+- Enables Microsoft ownership/identity verification for the landing site.
+
+## Testing
+- Not run: static asset only.
+- Confirmed the JSON file is present at `apps/landing/static/.well-known/microsoft-identity-association.json`.
+- Verified the file contents are valid JSON with the expected `associatedApplications` entry.
+
+**#325: fix: use workflows internal token for competitor discovery**
+Branch: DarrylBrooks97/fix-competitor-discovery-401
+Merged: Apr 28, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/325
+
+## Summary
+- Send `WORKFLOWS_INTERNAL_TOKEN` when core queues competitor discovery jobs
+- Keep the workflows auth fallback order aligned with the rest of the app
+- Add `WORKFLOWS_INTERNAL_TOKEN` to Turbo env handling so it is available in task runs
+
+## Testing
+- Not run (not requested)
+
+**#324: refactor: competitor discovery improvements**
+Branch: DarrylBrooks97/competitor-discovery-improvements
+Merged: Apr 28, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/324
+
+**#320: feat: custom snippets + outreach completions**
+Branch: DarrylBrooks97/bne-863-custom-email-snippets
+Merged: Apr 23, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/320
+
+**#319: refactor(BNE-871): add a dismiss button within tasks page**
+Branch: DarrylBrooks97/bne-871-task-dismiss
+Merged: Apr 23, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/319
+
+**#318: fix(outreach): apply company type filter across rails**
+Branch: DarrylBrooks97/outreach-company-type-filter-all-rails
+Merged: Apr 23, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/318
+
+## Summary
+- show the company type filter on Actions, Updates, and All outreach rails
+- preserve the selected company type when switching rail tabs
+- apply company type filtering before the rail top-five slice and fetch wider results for filtered non-All rails
+
+## Verification
+- bun fmt && bun check
+- bun check
+
+Note: check reports existing Svelte warnings in apps/landing, with 0 errors.
+
+**#317: fix(BNE-896): refine all-rail company type filter**
+Branch: DarrylBrooks97/add-alltab-secondary-filter
+Merged: Apr 23, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/317
+
+## Summary
+- Keep the company type filter scoped to the All rail and close it automatically when switching away
+- Key the rail list by `companyType` so filtered views animate and refresh correctly
+- Show a more specific empty state when a company type filter has no matches
+
+## Testing
+- `bun fmt && bun check` passed
+- Existing landing Svelte warnings remained, but there were no errors
+
+**#316: fix(workflows): keep daily email running after research failures**
+Branch: DarrylBrooks97/fix-daily-email-partial-digest
+Merged: Apr 23, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/316
+
+**#315: fix(core): refine outreach filters and selection copy**
+Branch: DarrylBrooks97/outreach-fixes-pt2
+Merged: Apr 22, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/315
+
+**#314: feat(BNE-857): outreach generation improvements**
+Branch: claude/gifted-lumiere-f928ba
+Merged: Apr 22, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/314
+
+**#311: fix: secure unsubscribe links and add reply-to env**
+Branch: DarrylBrooks97/daily-security-scan-1
+Merged: Apr 22, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/311
+
+## Summary
+- Sign unsubscribe links with `DATA_ENCRYPTION_KEY` and verify them in the workflows unsubscribe route.
+- Add `RESEND_REPLY_TO` to Turbo global envs so email script changes invalidate correctly.
+- Preserve the new unsubscribe footer/header behavior for changelog and custom emails.
+
+## Testing
+- Not run (not requested)
+
+**#313: fix(content): handle null Affinity field values**
+Branch: DarrylBrooks97/fix-content-extraction-null-error
+Merged: Apr 22, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/313
+
+## Summary
+- Guarded Affinity V2 field formatting against `null`/`undefined` `value.data` before array or property access.
+- Added a regression fixture for a nullable multi-value field in workflow content extraction.
+
+## Testing
+- Added/ran a focused unit test covering the Affinity company extraction path.
+- `bun fmt` and repo `bun check` passed in the workspace.
+
+**#305: fix: restore daily monitoring digest delivery**
+Branch: DarrylBrooks97/fix-production-daily-email-digest
+Merged: Apr 22, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/305
+
+## Summary
+- restore a dedicated weekday morning fanout for `workflows/monitoring.daily-email-test` so production sends the digest on business days only
+- have the morning daily-monitoring worker run the normal per-user company knowledge search and an inline macro-news pass before building the digest
+- move the legacy scheduled timely-updates wrapper to weekday evenings only so the morning path does not double-scan the same prospects
+- add a targeted timely-updates option for skipping owned-web fanout when the daily worker is already handling the normal company search
+
+## Testing
+- bun fmt
+- bun check
+- bun test apps/workflows/src/lib/inngest/functions/__tests__/scheduled-monitoring.test.ts
+- bun test apps/workflows/src/lib/inngest/functions/__tests__/monitoring-daily-email-scheduler.test.ts
+- bun test --preload apps/workflows/src/lib/__tests__/setup-env.ts apps/workflows/src/lib/timely-updates/__tests__/scan-program.test.ts
+- bun test --preload apps/workflows/src/lib/__tests__/setup-e…
+
+**#312: Fix Affinity sync auth and webhook secret recovery**
+Branch: DarrylBrooks97/fix-affinity-sync-401
+Merged: Apr 21, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/312
+
+## Summary
+- Use `WORKFLOWS_INTERNAL_TOKEN` as the shared bearer token for core -> workflows requests, with legacy env fallbacks preserved.
+- Add Affinity webhook registration upsert handling so reused webhook IDs keep the encrypted secret in sync with the target URL.
+- Let workflows recover from stale Affinity webhook secrets by reading the secret from the stored target URL and repairing the encrypted copy.
+
+## Testing
+- Added unit coverage for the Affinity webhook secret-repair path.
+- Ran `bun fmt` and `bun check` successfully.
+- Ran the targeted workflows webhook tests successfully.
+
+**#307: refactor: Add Affinity reminder sync and expand native note detection**
+Branch: DarrylBrooks97/review-affinity-reminders-sync
+Merged: Apr 21, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/307
+
+## Summary
+- Re-enable Affinity webhook setup during onboarding so reminder events can be received.
+- Add reminder sync support end-to-end, including updated Affinity reminder payload handling and next-action mapping.
+- Broaden note syncing to capture notes from both Affinity note records and list-field note columns.
+- Preserve next-action sync behavior with reminder owner resolution and updated tests.
+
+## Testing
+- `bun test apps/workflows/src/lib/sync/affinity-effect/__tests__/note-field-sync.test.ts`
+- `bun test apps/workflows/src/lib/inngest/functions/__tests__/next-action-sync.test.ts`
+- `bun run check --filter=@breaknine/workflows`
+- `bun fmt`
+- `bun check`
+
+**#309: fix: upgrade inngest sdk to 3.54.0**
+Branch: DarrylBrooks97/chore/inngest-sdk-security-fix
+Merged: Apr 20, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/309
+
+## Summary
+- upgrade direct `inngest` dependencies in `workflows`, `browser-worker`, and `hermes` to `^3.54.0`
+- refresh `bun.lock` and rebuild the checked-in `apps/browser-worker/dist/server.js` bundle so the deployed artifact also carries the patched SDK
+- keep the existing Hono Inngest endpoints on `GET`, `POST`, and `PUT` only; these routes were already not forwarding `PATCH`, `OPTIONS`, or `DELETE` into the SDK handler
+- fix a small `EmailLayout` optional prop typing issue so repo-wide `bun check` passes under `exactOptionalPropertyTypes`
+
+## Verification
+- `bun fmt`
+- `bun check`
+
+**#308: unsub and noreply**
+Branch: email_update
+Merged: Apr 20, 2026
+Author: tschneiderman
+URL: https://github.com/breaknineai/breaknine/pull/308
+
+**#306: perf(core): reduce duplicate Vercel trace assets**
+Branch: DarrylBrooks97/bne-851-speed-up-vercel-app-builds
+Merged: Apr 20, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/306
 
 ---
 
 ## Draft `<Update>` block
 
 ```mdx
-<Update label="Apr 24, 2026" description="vX.X.X">
+<Update label="May 1, 2026" description="vX.X.X">
   {/* DRAFT — review and edit before publishing */}
 
   ### MVP
 
-  **Change “Clear all” copy to “Deselect all”**
-
-  The current “Clear all” label may imply removing updates. It should say “Deselect all” instead.
-
-  **Implement dismiss button on tasks page**
+  **When outreaches are generated show completion toast**
 
   Summary
 
-  **Affinity web hook syncing**
+  **Add custom email snippets**
 
   Summary
 
-  **Auto delete outreach emails**
+  **Competitor fixes**
 
-  Summary
-
-  **Redesign Outreach**
-
-  Main issues
-
-  **Speed up vercel app builds**
-
-  Summary
+  The parent issue of the list of tasks that needs to be done
 
 </Update>
 ```
