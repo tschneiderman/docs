@@ -1,6 +1,6 @@
-# Linear + GitHub context for changelog — May 1, 2026
+# Linear + GitHub context for changelog — May 8, 2026
 
-_Generated 5/1/2026, 11:31:54 AM · 3 Done issue(s) from Linear · 18 merged PR(s) from GitHub_
+_Generated 5/8/2026, 4:47:42 PM · 6 Done issue(s) from Linear · 17 merged PR(s) from GitHub_
 
 ---
 
@@ -8,45 +8,43 @@ _Generated 5/1/2026, 11:31:54 AM · 3 Done issue(s) from Linear · 18 merged PR(
 
 ### MVP
 
-**BNE-900: When outreaches are generated show completion toast**
+**BNE-948: Expand the Notes sidebar width**
 State: Done
-Labels: Changelog 📰
-Completed: Apr 23, 2026
-URL: https://linear.app/breaknine/issue/BNE-900/when-outreaches-are-generated-show-completion-toast
+Labels: Bug
+Completed: May 7, 2026
+URL: https://linear.app/breaknine/issue/BNE-948/expand-the-notes-sidebar-width
 
 ### Summary
 
-After an outreach is generated we should show a toast with optional buttons 
+Right now in the notes sidebar it's hard to edit. We need to expand or create a wider area for editing
 
-### Blockers
+## Expectation
 
-* N/A
+*A detailed expectation of how the feature should work*
+
+### How to reproduce
+
+*Steps to reproduce issue*
+
+* 
 
 ### Acceptance criteria
 
-* After an outreach is generated a toast should pop up on the lower right hand corner
-  * Mark completed? Yes/No
-    * Yes
-      * Mark used updates as used
-      * Update the list position of the company in the left hand panel (this should work for each tab)
-    * No
-      * No action is needed
-    * Ignored?
-      * No action is needed
+* Sidebar's width is expanded 20% for easier editing
 
 ### Notes
 
-* This functionality will only live in the [/app/outreach](<http://localhost:3000/app/outreach>) page
+*Links to documents or quick notes*
 
-**BNE-863: Add custom email snippets**
+**BNE-929: Redesign public UI**
 State: Done
 Labels: Changelog 📰
-Completed: Apr 23, 2026
-URL: https://linear.app/breaknine/issue/BNE-863/add-custom-email-snippets
+Completed: May 4, 2026
+URL: https://linear.app/breaknine/issue/BNE-929/redesign-public-ui
 
 ### Summary
 
-Like SuperHuman, when drafting outreach emails we need custom snippets for users to utilize. Users can create/save snippets within their settings
+Since we're about to start getting traffic to the site I want to knock out public UI to make the app feel premium.
 
 ### Blockers
 
@@ -54,25 +52,299 @@ Like SuperHuman, when drafting outreach emails we need custom snippets for users
 
 ### Acceptance criteria
 
-* Setting up custom snippets should live in the /settings page
-* When inside emails there should be a hot key to add them
-  * I believe it's `⌘ + ;` in SuperHuman but we can change to whatever
+* Custom Login UI
+* Custom Onboarding UI
+
+### Notes
+
+* We'll be moving away from this WorkOS branding
+
+  ![CleanShot 2026-04-30 at 09.49.44@2x.png](https://uploads.linear.app/ed20061f-25b3-4096-ba82-826efeb03a2c/043f51c9-8212-4b68-a849-ec51e828657b/3c1cab40-e501-4513-9bbc-fbb036744f35)
+
+**BNE-876: Posthog Dashboards**
+State: Done
+Labels: Analytics, Changelog 📰
+Completed: May 5, 2026
+URL: https://linear.app/breaknine/issue/BNE-876/posthog-dashboards
+
+* [BNE-877](https://linear.app/breaknine/issue/BNE-877)
+* [BNE-878](https://linear.app/breaknine/issue/BNE-878)
+* [BNE-879](https://linear.app/breaknine/issue/BNE-879)
+* [BNE-880](https://linear.app/breaknine/issue/BNE-880)
+* [BNE-881](https://linear.app/breaknine/issue/BNE-881)
+* [BNE-882](https://linear.app/breaknine/issue/BNE-882)
+
+**BNE-872: Scrape portfolio companies from URL**
+State: Done
+Labels: Changelog 📰
+Completed: May 8, 2026
+URL: https://linear.app/breaknine/issue/BNE-872/scrape-portfolio-companies-from-url
+
+### Summary
+
+Users have to manually insert their portfolio companies, we should allow users to insert a company portfolio url for us to scrape and add
+
+### Blockers
+
+* N/A
+
+### Acceptance criteria
+
+* When user inserts a url we should collect the companies found on the page and insert them as portfolio companies
+  * We should attempt to extract prospects name + domain. An example would be [https://www.tuskventures.com/](<https://www.tuskventures.com/>) has Uber, Fanduel, Clear, Lemonade, etc
 
 ### Notes
 
 N/A
 
-**BNE-718: Competitor fixes**
+**BNE-866: Competitor discovery isn't working**
 State: Done
-Labels: Changelog 📰, Improvement, Investor Newsletter
-Completed: Apr 29, 2026
-URL: https://linear.app/breaknine/issue/BNE-718/competitor-fixes
+Labels: Bug
+Completed: May 4, 2026
+URL: https://linear.app/breaknine/issue/BNE-866/competitor-discovery-isnt-working
 
-The parent issue of the list of tasks that needs to be done
+### Summary
+
+The click to start a discovery isn't starting and fails with "Failed"
+
+## Expectation
+
+It should start the competitor discovery process with a success message and later deliver an email once completed.
+
+### How to reproduce
+
+* Click the 'Start Discovery' button in the 'References' tab on the Prospect page
+* Error message pops up
+
+### Acceptance criteria
+
+* When the user clicks the button a successful process should start
+
+### Notes
+
+* Vercel should have the logs
+
+**BNE-844: Configurable prospect tracking**
+State: Done
+Labels: Changelog 📰
+Completed: May 6, 2026
+URL: https://linear.app/breaknine/issue/BNE-844/configurable-prospect-tracking
+
+## Summary
+
+Right now the updates are noisy and users would like to only get updates for specific companies
+
+## Blockers
+
+* I need to verify if Airtable returns the needed fields for prospect `stage` before implementing. I can't remember if these filters are available after selecting a base
+
+## Acceptance criteria
+
+* A user's home feed + daily email digest shows only the companies that they'd like to track
+* Configurable **prospect**/**portfolio**/**competitor** options
+  * Options:
+    * Track/Untrack
+    * Interval
+      * Daily
+      * Weekly
+      * Monthly 
+
+## Notes
+
+* N/A
 
 ---
 
 ## GitHub PRs (merged)
+
+**#321: feat(BNE-872): port co url import**
+Branch: DarrylBrooks97/bne-872-portfolio-url-import
+Merged: May 8, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/321
+
+**#343: chore: remove unused browser worker**
+Branch: DarrylBrooks97/rm-browser-worker
+Merged: May 7, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/343
+
+## Summary
+
+This removes the unused standalone browser-worker application and its remaining references from the monorepo. The current company-news workflow path no longer needs the browser-worker app, so this deletes the app package, the workflows-side browser-worker client/effect adapter, the browser scrape Inngest function/events, and the related root scripts/env references.
+
+The only active dependency found during the cleanup was URL content rechecking. That flow now uses the existing company-news extraction client so content hashes continue to be computed from extracted page content without relying on the deleted worker.
+
+## Details
+
+- Removed the standalone browser-worker workspace and packaged server output.
+- Removed obsolete workflows browser scrape events, functions, client code, and Effect adapter.
+- Renamed the old browser callback route to the company-news callback route and narrowed the accepted callback events to active company-news workflow events.
+- Updated core workflo…
+
+**#344: refactor(bne-948): expand notes sidebar width**
+Branch: feature/bne-948-expand-the-notes-sidebar-width
+Merged: May 7, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/344
+
+## Summary
+
+- Keep the Notes sidebar 20% wider than the shared default width.
+- Open the quick note editor when a note is clicked, prefilled with the note title, content, and linked prospect.
+- Move note version history into the three-dot menu on each note card and render only history in the Notes sidebar.
+- Add a Notes-page-only History button beside Templates in the quick editor, with a scrollable version list and hover-card markdown previews.
+
+## Linear
+
+Closes BNE-948
+
+## Validation
+
+- `bun fmt`
+- `bun check`
+- `bun build:core`
+
+**#342: fix: docker deployments**
+Branch: DarrylBrooks97/fix-workflows-docker-depl
+Merged: May 7, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/342
+
+## Summary
+- Remove `--omit optional` from the workflows Docker install so `@sentry/bun` keeps its required runtime sub-dependencies.
+- Pin the container install to `bun.lock` and include the workspace manifests Bun needs for a clean filtered workspace install.
+- Add the native build tools required when optional packages trigger `node-gyp` during image build.
+
+## Testing
+- `bun fmt` passed.
+- `bun check` passed with the existing landing warnings only.
+- Fresh `docker build --no-cache` for `apps/workflows/Dockerfile` succeeded.
+- Verified the built image contains `@sentry/bun` in `apps/workflows/node_modules` and can import it successfully.
+
+**#340: fix: nest PostHog HogQL variables in daily usage query payload**
+Branch: DarrylBrooks97/fix-daily-slack-posthog-query
+Merged: May 7, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/340
+
+## Summary
+- Moved the daily usage Slack PostHog request to the current HogQL payload shape so variables are sent inside `query` instead of as a top-level field.
+- Added a focused unit test to lock in the payload structure and prevent this API drift from breaking production again.
+
+## Testing
+- `bun test apps/workflows/src/lib/inngest/functions/__tests__/daily-usage-slack.test.ts`
+- `bun fmt && bun check`
+
+**#338: fix(core): restore product analytics signals**
+Branch: DarrylBrooks97/fix-posthog-dashboard-analytics
+Merged: May 6, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/338
+
+## Summary
+
+- Adds a server-side `session_started` analytics helper for auth success paths.
+- Emits `session_started` from password signup, password signin, email verification, and OAuth callback flows.
+- Emits `update_surface_loaded` from the live Elysia feed route with feed item counts.
+
+## Why
+
+The PostHog dashboard was configured around product analytics events, but live PostHog data showed users interacting through auth and API events while `session_started` and `update_surface_loaded` were not arriving. This restores those intended product signals from server-side paths that are already proven to ingest events in production.
+
+## Validation
+
+- `bun fmt && bun check`
+- Verified the live PostHog dashboard now returns rows after adding fallback dashboard queries.
+
+**#337: feat(BNE-844): configurable tracking**
+Branch: DarrylBrooks97/bne-844-configurable-tracking
+Merged: May 6, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/337
+
+**#329: refactor(BNE-876): improved PH tracing**
+Branch: t3code/posthog-analytics-standard
+Merged: May 5, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/329
+
+**#334: feat(bne-888): daily usage slack message**
+Branch: DarrylBrooks97/bne-888-daily-usage-slack
+Merged: May 5, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/334
+
+**#336: email**
+Branch: emailInvest
+Merged: May 5, 2026
+Author: tschneiderman
+URL: https://github.com/breaknineai/breaknine/pull/336
+
+**#335: update email.md**
+Branch: emailmd
+Merged: May 5, 2026
+Author: tschneiderman
+URL: https://github.com/breaknineai/breaknine/pull/335
+
+**#333: fix: daily bug catches**
+Branch: codex/daily-bug-scan-signup-returnto
+Merged: May 5, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/333
+
+## Summary
+- Thread `returnTo` through Google and Microsoft signup OAuth flows so users land back on their intended page after sign-up.
+- Update the login page handlers to pass the current `returnTo` value into the signup actions.
+- Keep auth tracking aligned by recording the redirect target for signup OAuth events.
+
+## Testing
+- Not run (not requested).
+
+**#332: feat: create password flow**
+Branch: DarrylBrooks97/add-forgot-password-flow
+Merged: May 4, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/332
+
+## Summary
+- Add a forgot-password path to the login page with reset-link request handling and success state
+- Add a dedicated `/reset-password` page for completing token-based password resets
+- Wire WorkOS password reset request/completion helpers through the auth server layer
+- Expose the reset route as public and keep authenticated users on the app unless they are finishing a reset
+- Add workflow coverage for password-reset webhook enqueueing
+
+## Testing
+- Added/updated automated tests for password-reset webhook handling
+- Not run (not requested)
+
+**#331: fix: gate PostHog trace export to production**
+Branch: DarrylBrooks97/posthog-production-tracing-gate
+Merged: May 4, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/331
+
+**#330: refactor(BNE-929): improved signin/signup UI**
+Branch: DarrylBrooks97/refactor-onboarding-flow-animations
+Merged: May 4, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/330
+
+**#328: docs: Add shared Effect-TS agent skill and references**
+Branch: t3code/agent-docs-consolidation
+Merged: May 1, 2026
+Author: DarrylBrooks97
+URL: https://github.com/breaknineai/breaknine/pull/328
+
+## Summary
+- Added a shared `effect-ts` skill under `.agents/skills/` with Breaknine-specific guidance for server-side Effect code.
+- Documented core patterns for `Effect.fn`, services and layers, workflow boundaries, resources and concurrency, redaction, and testing.
+- Added symlinks in `.claude/`, `.codex/`, and `.opencode/` so the same skill is available across agent entrypoints.
+
+## Testing
+- Not run: documentation-only change.
+- Not run: `bun fmt && bun check`.
+- Not run: runtime or integration tests.
 
 **#326: Add Microsoft identity association file for landing site**
 Branch: t3code/microsoft-identity-association
@@ -90,220 +362,44 @@ URL: https://github.com/breaknineai/breaknine/pull/326
 - Confirmed the JSON file is present at `apps/landing/static/.well-known/microsoft-identity-association.json`.
 - Verified the file contents are valid JSON with the expected `associatedApplications` entry.
 
-**#325: fix: use workflows internal token for competitor discovery**
-Branch: DarrylBrooks97/fix-competitor-discovery-401
-Merged: Apr 28, 2026
-Author: DarrylBrooks97
-URL: https://github.com/breaknineai/breaknine/pull/325
-
-## Summary
-- Send `WORKFLOWS_INTERNAL_TOKEN` when core queues competitor discovery jobs
-- Keep the workflows auth fallback order aligned with the rest of the app
-- Add `WORKFLOWS_INTERNAL_TOKEN` to Turbo env handling so it is available in task runs
-
-## Testing
-- Not run (not requested)
-
-**#324: refactor: competitor discovery improvements**
-Branch: DarrylBrooks97/competitor-discovery-improvements
-Merged: Apr 28, 2026
-Author: DarrylBrooks97
-URL: https://github.com/breaknineai/breaknine/pull/324
-
-**#320: feat: custom snippets + outreach completions**
-Branch: DarrylBrooks97/bne-863-custom-email-snippets
-Merged: Apr 23, 2026
-Author: DarrylBrooks97
-URL: https://github.com/breaknineai/breaknine/pull/320
-
-**#319: refactor(BNE-871): add a dismiss button within tasks page**
-Branch: DarrylBrooks97/bne-871-task-dismiss
-Merged: Apr 23, 2026
-Author: DarrylBrooks97
-URL: https://github.com/breaknineai/breaknine/pull/319
-
-**#318: fix(outreach): apply company type filter across rails**
-Branch: DarrylBrooks97/outreach-company-type-filter-all-rails
-Merged: Apr 23, 2026
-Author: DarrylBrooks97
-URL: https://github.com/breaknineai/breaknine/pull/318
-
-## Summary
-- show the company type filter on Actions, Updates, and All outreach rails
-- preserve the selected company type when switching rail tabs
-- apply company type filtering before the rail top-five slice and fetch wider results for filtered non-All rails
-
-## Verification
-- bun fmt && bun check
-- bun check
-
-Note: check reports existing Svelte warnings in apps/landing, with 0 errors.
-
-**#317: fix(BNE-896): refine all-rail company type filter**
-Branch: DarrylBrooks97/add-alltab-secondary-filter
-Merged: Apr 23, 2026
-Author: DarrylBrooks97
-URL: https://github.com/breaknineai/breaknine/pull/317
-
-## Summary
-- Keep the company type filter scoped to the All rail and close it automatically when switching away
-- Key the rail list by `companyType` so filtered views animate and refresh correctly
-- Show a more specific empty state when a company type filter has no matches
-
-## Testing
-- `bun fmt && bun check` passed
-- Existing landing Svelte warnings remained, but there were no errors
-
-**#316: fix(workflows): keep daily email running after research failures**
-Branch: DarrylBrooks97/fix-daily-email-partial-digest
-Merged: Apr 23, 2026
-Author: DarrylBrooks97
-URL: https://github.com/breaknineai/breaknine/pull/316
-
-**#315: fix(core): refine outreach filters and selection copy**
-Branch: DarrylBrooks97/outreach-fixes-pt2
-Merged: Apr 22, 2026
-Author: DarrylBrooks97
-URL: https://github.com/breaknineai/breaknine/pull/315
-
-**#314: feat(BNE-857): outreach generation improvements**
-Branch: claude/gifted-lumiere-f928ba
-Merged: Apr 22, 2026
-Author: DarrylBrooks97
-URL: https://github.com/breaknineai/breaknine/pull/314
-
-**#311: fix: secure unsubscribe links and add reply-to env**
-Branch: DarrylBrooks97/daily-security-scan-1
-Merged: Apr 22, 2026
-Author: DarrylBrooks97
-URL: https://github.com/breaknineai/breaknine/pull/311
-
-## Summary
-- Sign unsubscribe links with `DATA_ENCRYPTION_KEY` and verify them in the workflows unsubscribe route.
-- Add `RESEND_REPLY_TO` to Turbo global envs so email script changes invalidate correctly.
-- Preserve the new unsubscribe footer/header behavior for changelog and custom emails.
-
-## Testing
-- Not run (not requested)
-
-**#313: fix(content): handle null Affinity field values**
-Branch: DarrylBrooks97/fix-content-extraction-null-error
-Merged: Apr 22, 2026
-Author: DarrylBrooks97
-URL: https://github.com/breaknineai/breaknine/pull/313
-
-## Summary
-- Guarded Affinity V2 field formatting against `null`/`undefined` `value.data` before array or property access.
-- Added a regression fixture for a nullable multi-value field in workflow content extraction.
-
-## Testing
-- Added/ran a focused unit test covering the Affinity company extraction path.
-- `bun fmt` and repo `bun check` passed in the workspace.
-
-**#305: fix: restore daily monitoring digest delivery**
-Branch: DarrylBrooks97/fix-production-daily-email-digest
-Merged: Apr 22, 2026
-Author: DarrylBrooks97
-URL: https://github.com/breaknineai/breaknine/pull/305
-
-## Summary
-- restore a dedicated weekday morning fanout for `workflows/monitoring.daily-email-test` so production sends the digest on business days only
-- have the morning daily-monitoring worker run the normal per-user company knowledge search and an inline macro-news pass before building the digest
-- move the legacy scheduled timely-updates wrapper to weekday evenings only so the morning path does not double-scan the same prospects
-- add a targeted timely-updates option for skipping owned-web fanout when the daily worker is already handling the normal company search
-
-## Testing
-- bun fmt
-- bun check
-- bun test apps/workflows/src/lib/inngest/functions/__tests__/scheduled-monitoring.test.ts
-- bun test apps/workflows/src/lib/inngest/functions/__tests__/monitoring-daily-email-scheduler.test.ts
-- bun test --preload apps/workflows/src/lib/__tests__/setup-env.ts apps/workflows/src/lib/timely-updates/__tests__/scan-program.test.ts
-- bun test --preload apps/workflows/src/lib/__tests__/setup-e…
-
-**#312: Fix Affinity sync auth and webhook secret recovery**
-Branch: DarrylBrooks97/fix-affinity-sync-401
-Merged: Apr 21, 2026
-Author: DarrylBrooks97
-URL: https://github.com/breaknineai/breaknine/pull/312
-
-## Summary
-- Use `WORKFLOWS_INTERNAL_TOKEN` as the shared bearer token for core -> workflows requests, with legacy env fallbacks preserved.
-- Add Affinity webhook registration upsert handling so reused webhook IDs keep the encrypted secret in sync with the target URL.
-- Let workflows recover from stale Affinity webhook secrets by reading the secret from the stored target URL and repairing the encrypted copy.
-
-## Testing
-- Added unit coverage for the Affinity webhook secret-repair path.
-- Ran `bun fmt` and `bun check` successfully.
-- Ran the targeted workflows webhook tests successfully.
-
-**#307: refactor: Add Affinity reminder sync and expand native note detection**
-Branch: DarrylBrooks97/review-affinity-reminders-sync
-Merged: Apr 21, 2026
-Author: DarrylBrooks97
-URL: https://github.com/breaknineai/breaknine/pull/307
-
-## Summary
-- Re-enable Affinity webhook setup during onboarding so reminder events can be received.
-- Add reminder sync support end-to-end, including updated Affinity reminder payload handling and next-action mapping.
-- Broaden note syncing to capture notes from both Affinity note records and list-field note columns.
-- Preserve next-action sync behavior with reminder owner resolution and updated tests.
-
-## Testing
-- `bun test apps/workflows/src/lib/sync/affinity-effect/__tests__/note-field-sync.test.ts`
-- `bun test apps/workflows/src/lib/inngest/functions/__tests__/next-action-sync.test.ts`
-- `bun run check --filter=@breaknine/workflows`
-- `bun fmt`
-- `bun check`
-
-**#309: fix: upgrade inngest sdk to 3.54.0**
-Branch: DarrylBrooks97/chore/inngest-sdk-security-fix
-Merged: Apr 20, 2026
-Author: DarrylBrooks97
-URL: https://github.com/breaknineai/breaknine/pull/309
-
-## Summary
-- upgrade direct `inngest` dependencies in `workflows`, `browser-worker`, and `hermes` to `^3.54.0`
-- refresh `bun.lock` and rebuild the checked-in `apps/browser-worker/dist/server.js` bundle so the deployed artifact also carries the patched SDK
-- keep the existing Hono Inngest endpoints on `GET`, `POST`, and `PUT` only; these routes were already not forwarding `PATCH`, `OPTIONS`, or `DELETE` into the SDK handler
-- fix a small `EmailLayout` optional prop typing issue so repo-wide `bun check` passes under `exactOptionalPropertyTypes`
-
-## Verification
-- `bun fmt`
-- `bun check`
-
-**#308: unsub and noreply**
-Branch: email_update
-Merged: Apr 20, 2026
-Author: tschneiderman
-URL: https://github.com/breaknineai/breaknine/pull/308
-
-**#306: perf(core): reduce duplicate Vercel trace assets**
-Branch: DarrylBrooks97/bne-851-speed-up-vercel-app-builds
-Merged: Apr 20, 2026
-Author: DarrylBrooks97
-URL: https://github.com/breaknineai/breaknine/pull/306
-
 ---
 
 ## Draft `<Update>` block
 
 ```mdx
-<Update label="May 1, 2026" description="vX.X.X">
+<Update label="May 8, 2026" description="vX.X.X">
   {/* DRAFT — review and edit before publishing */}
 
   ### MVP
 
-  **When outreaches are generated show completion toast**
+  **Expand the Notes sidebar width**
 
   Summary
 
-  **Add custom email snippets**
+  **Redesign public UI**
 
   Summary
 
-  **Competitor fixes**
+  **Posthog Dashboards**
 
-  The parent issue of the list of tasks that needs to be done
+  * [BNE-877](https://linear.app/breaknine/issue/BNE-877)
+* [BNE-878](https://linear.app/breaknine/issue/BNE-878)
+* [BNE-879](https://linear.app/breaknine/issue/BNE-879)
+* [BNE-880](https://linear.app/breaknine/issue/BNE-880)
+* [BNE-881](https://linear.app/breaknine/issue/BNE-881)
+* [BNE-882](https://linear.app/breaknine/issue/BNE-882)
+
+  **Scrape portfolio companies from URL**
+
+  Summary
+
+  **Competitor discovery isn't working**
+
+  Summary
+
+  **Configurable prospect tracking**
+
+  Summary
 
 </Update>
 ```
