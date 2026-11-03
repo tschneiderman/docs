@@ -55,13 +55,13 @@
     "links": [
       {
         "label": "App",
-        "href": "https://app.breaknine.com"
+        "href": "https://app.breaknine.ai"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Sign in",
-      "href": "https://app.breaknine.com"
+      "href": "https://app.breaknine.ai"
     }
   },
   "redirects": [
